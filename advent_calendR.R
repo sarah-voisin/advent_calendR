@@ -545,10 +545,18 @@ server <- function(input, output, session) {
             # Get background image for this day
             bg_image <- background_images[[as.character(day)]]
             
+            # Get background image for this day
+            bg_image <- background_images[[as.character(day)]]
+            
+            # Prepare quote text (replace newlines with <br> for HTML)
+            quote_text <- gsub("\n", "<br>", quotes[[day]])
+            # Escape single quotes for JavaScript
+            quote_text <- gsub("'", "\\\\'", quote_text)
+            
             # Show quote with background image
             runjs(paste0("$('#quote_modal').css('background-image', 'url(", bg_image, ")');"))
             runjs(paste0("$('#modal_title').text('Day ", day, "');"))
-            runjs(paste0("$('#modal_quote').text('", gsub("\n", "\\\\n", quotes[[day]]), "');"))
+            runjs(paste0("$('#modal_quote').html('", quote_text, "');"))
             show("modal_overlay")
             show("quote_modal")
         }
