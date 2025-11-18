@@ -260,25 +260,28 @@ ui <- fluidPage(
         color: #2c1810;
         box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
       }
-      .quote-modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 3px solid #ffd700;
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 600px;
-        max-height: 80vh;
-        width: 90%;
-        box-shadow: 0 10px 50px rgba(0,0,0,0.8);
-        z-index: 1000;
-        color: #ffd700;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        overflow-y: auto;
-      }
+.quote-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #ffd700;
+    border-radius: 20px;
+    padding: 40px;
+    width: 600px;
+    height: 600px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+    z-index: 1000;
+    color: #ffd700;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
       .quote-modal::before {
         content: '';
         position: absolute;
@@ -298,13 +301,18 @@ ui <- fluidPage(
         padding: 10px;
         border-radius: 10px;
       }
-      .quote-content {
-        font-size: 1.2em;
-        line-height: 1.8;
-        text-align: left;
-        white-space: pre-line;
-        margin: 20px 0;
-      }
+ .quote-content {
+    font-size: 1.2em;
+    line-height: 1.8;
+    text-align: left;
+    white-space: pre-line;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    background: rgba(45, 27, 78, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 90%;
+}
       .close-btn {
         background: #ffd700;
         color: #2d1b4e;
