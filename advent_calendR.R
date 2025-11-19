@@ -36,8 +36,7 @@ quotes <- list(
     "I'm not really sure why. But... do you stop loving someone just because they betray you? I don't think so. That's what makes the betrayal hurt so much - pain, frustration, anger... and I still loved her. I still do.\n― Brandon Sanderson, Mistborn: The Final Empire",
     "Nothing burns in your heart like the emptiness of losing something, someone, before you truly have learned of its value.\n― R.A. Salvatore, Homeland",
     "Joy multiplies when it is shared among friends, but grief diminishes with every division. That is life.\n― R.A. Salvatore, Exile",
-    "Merry Christmas! May your day be filled with magic, wonder, and the joy of shared stories. ✨🎄"
-)
+    "You are a true adventurer\n And I am proud to call myself your lover ❤")
 
 # *** TEST MODE PARAMETER - SET TO TRUE TO UNLOCK ALL DAYS ***
 TEST_MODE <- TRUE  # Change to TRUE to test opening all days
@@ -70,8 +69,8 @@ background_images <- list(
     '20' = paste0(GITHUB_BASE_URL, "HP7.jpg"),
     '21' = paste0(GITHUB_BASE_URL, "CTR.jpg"),
     '22' = paste0(GITHUB_BASE_URL, "MFE.jpg"),
-    '23' = paste0(GITHUB_BASE_URL, "HP1.jpg"),
-    '24' = paste0(GITHUB_BASE_URL, "HP1.jpg"),
+    '23' = paste0(GITHUB_BASE_URL, "HL.jpg"),
+    '24' = paste0(GITHUB_BASE_URL, "EX.jpg"),
     '25' = paste0(GITHUB_BASE_URL, "Christmas.jpg")
 )
 
@@ -375,13 +374,13 @@ ui <- fluidPage(
     # Welcome screen
     div(id = "welcome_screen", class = "welcome-screen",
         div(class = "welcome-box",
-            div(class = "welcome-title", "✨ Welcome, Traveler! ✨"),
+            div(class = "welcome-title", "✨ Welcome, My love ✨"),
             div(class = "welcome-text",
-                "Before you begin your enchanted journey through the advent calendar, please tell us your name so we can remember your progress."
+                "Please write down your name so I bring you back where you left off."
             ),
             textInput("user_name", NULL, placeholder = "Enter your name...", 
                       width = "100%"),
-            actionButton("enter_calendar", "Enter the Calendar", 
+            actionButton("enter_calendar", "To an enchanted December", 
                          class = "enter-btn"),
             div(id = "loading_message", class = "loading-text", style = "display: none;",
                 "Loading your progress...")
