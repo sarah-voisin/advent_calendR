@@ -17,25 +17,26 @@ quotes <- list(
     "No darkness lasts forever. And even there, there are stars.\n― Ursula K. Le Guin, The Farthest Shore",
     "You are beautiful, Tenar said in a different tone. Listen to me, Therru. Come here. You have scars, ugly scars, because an ugly, evil thing was done to you. People see the scars. But they see you, too, and you aren't the scars. You aren't ugly. You aren't evil. You are Therru, and beautiful. You are Therru who can work, and walk, and run, and dance, beautifully, in a red dress.\n― Ursula K. Le Guin, Tehanu",
     "It's a rare gift, to know where you need to be, before you've been to all the places you don't need to be.\n― Ursula K. Le Guin, Tales from Earthsea",
-    "I’d rather get bad news from an honest man than lies from a flatterer,\n― Ursula K. Le Guin, The Other Wind",
+    "I'd rather get bad news from an honest man than lies from a flatterer,\n― Ursula K. Le Guin, The Other Wind",
     "Not all those who wander are lost.\n― J.R.R. Tolkien, The Fellowship of the Ring",
     "I do not love the bright sword for its sharpness, nor the arrow for its swiftness, nor the warrior for his glory. I love only that which they defend.\n― J.R.R. Tolkien, The Two Towers",
     "What do you fear, lady? [Aragorn] asked.\nA cage, [Éowyn] said. To stay behind bars, until use and old age accept them, and all chance of doing great deeds is gone beyond recall or desire.\n― J.R.R. Tolkien, The Return of the King",
     "We are all subject to the fates. But we must act as if we are not, or die of despair.\n― Philip Pullman, The Golden Compass",
     "Words are pale shadows of forgotten names. As names have power, words have power. Words can light fires in the minds of men. Words can wring tears from the hardest hearts.\n― Patrick Rothfuss, The Name of the Wind",
-    "Love isn’t some scarce resource to battle over. Love can be infinite, as much as your heart can open.\n― Xiran Jay Zhao, Iron Widow",
+    "Love isn't some scarce resource to battle over. Love can be infinite, as much as your heart can open.\n― Xiran Jay Zhao, Iron Widow",
     "Every oppressor, through their denial of humanity, sows the seed of their own destruction.\n― Xiran Jay Zhao, Heavenly Tyrant",
     "The truth. Dumbledore sighed. It is a beautiful and terrible thing, and should therefore be treated with great caution.\n― J.K. Rowling, Harry Potter and the Sorcerer's Stone",
     "It is our choices, Harry, that show what we truly are, far more than our abilities.\n― J.K. Rowling, Harry Potter and the Chamber of Secrets",
     "I solemnly swear that I am up to no good.\n― J.K. Rowling, Harry Potter and the Prisoner of Azkaban",
     "If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.\n― J.K. Rowling, Harry Potter and the Goblet of Fire",
-    "Wit beyond measure is man’s greatest treasure.\n― J.K. Rowling, Harry Potter and the Order of the Phoenix",
+    "Wit beyond measure is man's greatest treasure.\n― J.K. Rowling, Harry Potter and the Order of the Phoenix",
     "The thing about growing up with Fred and George,said Ginny thoughtfully, is that you sort of start thinking anything's possible if you've got enough nerve.\n― J. K. Rowling, Harry Potter and the Half-Blood Prince",
     "Do not pity the dead, Harry. Pity the living, and, above all those who live without love.\n― J.K. Rowling, Harry Potter and the Deathly Hallows",
     "Don't feel bad for one moment about doing what brings you joy.\n― Sarah J. Maas, A Court of Thorns and Roses",
     "I'm not really sure why. But... do you stop loving someone just because they betray you? I don't think so. That's what makes the betrayal hurt so much - pain, frustration, anger... and I still loved her. I still do.\n― Brandon Sanderson, Mistborn: The Final Empire",
     "Nothing burns in your heart like the emptiness of losing something, someone, before you truly have learned of its value.\n― R.A. Salvatore, Homeland",
-    "Joy multiplies when it is shared among friends, but grief diminishes with every division. That is life.\n― R.A. Salvatore, Exile"
+    "Joy multiplies when it is shared among friends, but grief diminishes with every division. That is life.\n― R.A. Salvatore, Exile",
+    "Merry Christmas! May your day be filled with magic, wonder, and the joy of shared stories. ✨🎄"
 )
 
 # *** TEST MODE PARAMETER - SET TO TRUE TO UNLOCK ALL DAYS ***
@@ -70,22 +71,16 @@ background_images <- list(
     '21' = paste0(GITHUB_BASE_URL, "CTR.jpg"),
     '22' = paste0(GITHUB_BASE_URL, "MFE.jpg"),
     '23' = paste0(GITHUB_BASE_URL, "HP1.jpg"),
-    '24' = paste0(GITHUB_BASE_URL, "HP1.jpg")
+    '24' = paste0(GITHUB_BASE_URL, "HP1.jpg"),
+    '25' = paste0(GITHUB_BASE_URL, "Christmas.jpg")
 )
 
-# Shuffled day order for visual interest
-day_order <- c(15, 3, 22, 8, 19, 1, 12, 24, 6, 17, 4, 21, 
-               9, 14, 2, 20, 7, 23, 11, 16, 5, 18, 10, 13)
-
-# Define sizes for collage effect
-day_sizes <- list(
-    '1' = c(1, 1), '2' = c(1, 1), '3' = c(2, 1), '4' = c(1, 1),
-    '5' = c(1, 2), '6' = c(1, 1), '7' = c(1, 1), '8' = c(2, 2),
-    '9' = c(1, 1), '10' = c(1, 1), '11' = c(1, 1), '12' = c(1, 2),
-    '13' = c(2, 1), '14' = c(1, 1), '15' = c(1, 1), '16' = c(1, 1),
-    '17' = c(2, 1), '18' = c(1, 1), '19' = c(1, 1), '20' = c(1, 1),
-    '21' = c(1, 2), '22' = c(1, 1), '23' = c(1, 1), '24' = c(2, 2)
-)
+# Shuffled day order for visual interest - now in 5x5 grid
+day_order <- c(15, 3, 22, 8, 19,
+               1, 12, 24, 6, 17, 
+               4, 21, 9, 14, 2, 
+               20, 7, 23, 11, 16, 
+               5, 18, 10, 13, 25)
 
 # Helper functions for Google Sheets
 load_user_progress <- function(user_name) {
@@ -206,10 +201,11 @@ ui <- fluidPage(
       }
       .calendar-grid {
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        grid-auto-rows: 100px;
-        gap: 12px;
-        max-width: 1100px;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 15px;
+        max-width: 700px;
+        aspect-ratio: 1;
         margin: 0 auto;
         padding: 20px;
       }
@@ -219,12 +215,13 @@ ui <- fluidPage(
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5em;
+        font-size: 1.8em;
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s;
         position: relative;
         overflow: hidden;
+        aspect-ratio: 1;
       }
       .day-box::before {
         content: '';
@@ -236,10 +233,6 @@ ui <- fluidPage(
         background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
         transform: rotate(45deg);
       }
-      .size-1-1 { grid-column: span 1; grid-row: span 1; }
-      .size-2-1 { grid-column: span 2; grid-row: span 1; }
-      .size-1-2 { grid-column: span 1; grid-row: span 2; }
-      .size-2-2 { grid-column: span 2; grid-row: span 2; font-size: 2em; }
       
       .unlocked {
         background: linear-gradient(135deg, #6a4c93 0%, #4a3573 100%);
@@ -260,28 +253,43 @@ ui <- fluidPage(
         color: #2c1810;
         box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
       }
-.quote-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid #ffd700;
-    border-radius: 20px;
-    padding: 40px;
-    width: 600px;
-    height: 600px;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.8);
-    z-index: 1000;
-    color: #ffd700;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+      .christmas-day {
+        background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 20px rgba(196, 30, 58, 0.6) !important;
+        border: 3px solid #ffd700 !important;
+        animation: christmasGlow 2s ease-in-out infinite;
+      }
+      .christmas-day:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 30px rgba(196, 30, 58, 0.8) !important;
+      }
+      @keyframes christmasGlow {
+        0%, 100% { box-shadow: 0 4px 20px rgba(196, 30, 58, 0.6); }
+        50% { box-shadow: 0 4px 30px rgba(255, 215, 0, 0.8); }
+      }
+      .quote-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 3px solid #ffd700;
+        border-radius: 20px;
+        padding: 40px;
+        width: 600px;
+        height: 600px;
+        box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+        z-index: 1000;
+        color: #ffd700;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
       .quote-modal::before {
         content: '';
         position: absolute;
@@ -301,18 +309,18 @@ ui <- fluidPage(
         padding: 10px;
         border-radius: 10px;
       }
- .quote-content {
-    font-size: 1.2em;
-    line-height: 1.8;
-    text-align: left;
-    white-space: pre-line;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    background: rgba(45, 27, 78, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    max-width: 90%;
-}
+      .quote-content {
+        font-size: 1.2em;
+        line-height: 1.8;
+        text-align: left;
+        white-space: pre-line;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        background: rgba(45, 27, 78, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        max-width: 90%;
+      }
       .close-btn {
         background: #ffd700;
         color: #2d1b4e;
@@ -340,9 +348,6 @@ ui <- fluidPage(
       .day-number {
         font-size: 1em;
         z-index: 1;
-      }
-      .size-2-2 .day-number {
-        font-size: 1.3em;
       }
       .test-mode-banner {
         background: #ff6b6b;
@@ -402,14 +407,13 @@ ui <- fluidPage(
             
             div(class = "calendar-grid",
                 lapply(day_order, function(i) {
-                    size <- day_sizes[[as.character(i)]]
-                    size_class <- paste0("size-", size[1], "-", size[2])
+                    christmas_class <- if(i == 25) "christmas-day" else ""
                     
                     div(
                         id = paste0("day_", i),
-                        class = paste("day-box locked", size_class),
+                        class = paste("day-box locked", christmas_class),
                         onclick = paste0("Shiny.setInputValue('day_clicked', ", i, ", {priority: 'event'})"),
-                        div(class = "day-number", i)
+                        div(class = "day-number", if(i == 25) "🎄" else i)
                     )
                 })
             )
@@ -492,18 +496,18 @@ server <- function(input, output, session) {
         
         # Calculate which days should be unlocked
         if (TEST_MODE) {
-            unlocked_days <- 1:24
+            unlocked_days <- 1:25
         } else if (current_date >= december_first && format(current_date, "%m") == "12") {
             current_day <- as.numeric(format(current_date, "%d"))
-            unlocked_days <- 1:min(current_day, 24)
-        } else if (current_date > as.Date(paste0(format(current_date, "%Y"), "-12-24"))) {
-            unlocked_days <- 1:24
+            unlocked_days <- 1:min(current_day, 25)
+        } else if (current_date > as.Date(paste0(format(current_date, "%Y"), "-12-25"))) {
+            unlocked_days <- 1:25
         } else {
             unlocked_days <- numeric(0)
         }
         
         # Update UI for each day
-        for (i in 1:24) {
+        for (i in 1:25) {
             if (i %in% opened_days()) {
                 runjs(paste0("$('#day_", i, "').removeClass('locked unlocked').addClass('opened');"))
             } else if (i %in% unlocked_days) {
@@ -524,8 +528,8 @@ server <- function(input, output, session) {
             is_unlocked <- TRUE
         } else if (current_date >= december_first && format(current_date, "%m") == "12") {
             current_day <- as.numeric(format(current_date, "%d"))
-            is_unlocked <- day <= min(current_day, 24)
-        } else if (current_date > as.Date(paste0(format(current_date, "%Y"), "-12-24"))) {
+            is_unlocked <- day <= min(current_day, 25)
+        } else if (current_date > as.Date(paste0(format(current_date, "%Y"), "-12-25"))) {
             is_unlocked <- TRUE
         } else {
             is_unlocked <- FALSE
@@ -541,9 +545,6 @@ server <- function(input, output, session) {
                 # Save to Google Sheets
                 save_day_opened(current_user(), day)
             }
-            
-            # Get background image for this day
-            bg_image <- background_images[[as.character(day)]]
             
             # Get background image for this day
             bg_image <- background_images[[as.character(day)]]
