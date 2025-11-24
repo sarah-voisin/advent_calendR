@@ -39,11 +39,10 @@ quotes <- list(
     "You are a true adventurer\n And I am proud to call myself your lover ❤\n― Sarah")
 
 # *** TEST MODE PARAMETER - SET TO TRUE TO UNLOCK ALL DAYS ***
-TEST_MODE <- TRUE  # Change to TRUE to test opening all days
+TEST_MODE <- FALSE  # Change to TRUE to test opening all days
 
 # *** BACKGROUND IMAGES FOR EACH DAY ***
 # Replace these URLs with your GitHub image URLs
-# Format: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/day1.jpg"
 GITHUB_BASE_URL <- "https://raw.githubusercontent.com/sarah-voisin/advent_calendR/main/"
 
 background_images <- list(
@@ -71,7 +70,7 @@ background_images <- list(
     '22' = paste0(GITHUB_BASE_URL, "MFE.jpg"),
     '23' = paste0(GITHUB_BASE_URL, "HL.jpg"),
     '24' = paste0(GITHUB_BASE_URL, "EX.jpg"),
-    '25' = paste0(GITHUB_BASE_URL, "Simon_and_I_goat.jpg")
+    '25' = paste0(GITHUB_BASE_URL, "Simon_sea.jpg")
 )
 
 # Shuffled day order for visual interest - now in 5x5 grid
@@ -134,6 +133,12 @@ ui <- fluidPage(
         margin: 30px 0;
         font-weight: bold;
       }
+      @media (max-width: 768px) {
+        .title {
+          font-size: 1.8em;
+          margin: 20px 0;
+        }
+      }
       .welcome-screen {
         position: fixed;
         top: 0;
@@ -155,17 +160,34 @@ ui <- fluidPage(
         text-align: center;
         box-shadow: 0 10px 50px rgba(0,0,0,0.5);
       }
+      @media (max-width: 768px) {
+        .welcome-box {
+          padding: 30px;
+          margin: 20px;
+          max-width: 90vw;
+        }
+      }
       .welcome-title {
         color: #ffd700;
         font-size: 2em;
         margin-bottom: 20px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       }
+      @media (max-width: 768px) {
+        .welcome-title {
+          font-size: 1.5em;
+        }
+      }
       .welcome-text {
         color: #e6d5b8;
         font-size: 1.1em;
         margin-bottom: 30px;
         line-height: 1.6;
+      }
+      @media (max-width: 768px) {
+        .welcome-text {
+          font-size: 1em;
+        }
       }
       .name-input {
         width: 100%;
@@ -208,6 +230,13 @@ ui <- fluidPage(
         margin: 0 auto;
         padding: 20px;
       }
+      @media (max-width: 768px) {
+        .calendar-grid {
+          max-width: 95vw;
+          gap: 8px;
+          padding: 10px;
+        }
+      }
       .day-box {
         border: 3px solid #8b7355;
         border-radius: 15px;
@@ -221,6 +250,12 @@ ui <- fluidPage(
         position: relative;
         overflow: hidden;
         aspect-ratio: 1;
+      }
+      @media (max-width: 768px) {
+        .day-box {
+          font-size: 1.3em;
+          border-radius: 10px;
+        }
       }
       .day-box::before {
         content: '';
@@ -274,13 +309,15 @@ ui <- fluidPage(
         transform: translate(-50%, -50%);
         border: 3px solid #ffd700;
         border-radius: 20px;
-        padding: 40px;
-        width: 600px;
-        height: 600px;
+        padding: 20px;
+        width: min(600px, 90vw);
+        height: min(600px, 85vh);
+        max-width: 90vw;
+        max-height: 85vh;
         box-shadow: 0 10px 50px rgba(0,0,0,0.8);
         z-index: 1000;
         color: #ffd700;
-        background-size: cover;
+        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
         overflow-y: auto;
@@ -288,6 +325,14 @@ ui <- fluidPage(
         flex-direction: column;
         align-items: center;
         justify-content: center;
+      }
+      @media (max-width: 768px) {
+        .quote-modal {
+          padding: 15px;
+          width: 90vw;
+          height: 80vh;
+          border-radius: 15px;
+        }
       }
       .quote-modal::before {
         content: '';
@@ -308,6 +353,11 @@ ui <- fluidPage(
         padding: 10px;
         border-radius: 10px;
       }
+      @media (max-width: 768px) {
+        .modal-title {
+          font-size: 1.2em;
+        }
+      }
       .quote-content {
         font-size: 1.2em;
         line-height: 1.8;
@@ -319,6 +369,14 @@ ui <- fluidPage(
         border-radius: 10px;
         display: inline-block;
         max-width: 90%;
+      }
+      @media (max-width: 768px) {
+        .quote-content {
+          font-size: 1em;
+          line-height: 1.6;
+          padding: 15px;
+          max-width: 95%;
+        }
       }
       .close-btn {
         background: #ffd700;
@@ -363,6 +421,11 @@ ui <- fluidPage(
         margin-top: -20px;
         margin-bottom: 10px;
       }
+      @media (max-width: 768px) {
+        .user-greeting {
+          font-size: 0.9em;
+        }
+      }
       .loading-text {
         color: #e6d5b8;
         font-size: 0.9em;
@@ -374,13 +437,13 @@ ui <- fluidPage(
     # Welcome screen
     div(id = "welcome_screen", class = "welcome-screen",
         div(class = "welcome-box",
-            div(class = "welcome-title", "✨ Welcome, My love ✨"),
+            div(class = "welcome-title", "✨ Welcome, my love ✨"),
             div(class = "welcome-text",
                 "Please write down your name so I bring you back where you left off."
             ),
             textInput("user_name", NULL, placeholder = "Enter your name...", 
                       width = "100%"),
-            actionButton("enter_calendar", "To an enchanted December", 
+            actionButton("enter_calendar", "To the calendar", 
                          class = "enter-btn"),
             div(id = "loading_message", class = "loading-text", style = "display: none;",
                 "Loading your progress...")
