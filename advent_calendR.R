@@ -36,7 +36,7 @@ quotes <- list(
     "I'm not really sure why. But... do you stop loving someone just because they betray you? I don't think so. That's what makes the betrayal hurt so much - pain, frustration, anger... and I still loved her. I still do.\n― Brandon Sanderson, Mistborn: The Final Empire",
     "Nothing burns in your heart like the emptiness of losing something, someone, before you truly have learned of its value.\n― R.A. Salvatore, Homeland",
     "Joy multiplies when it is shared among friends, but grief diminishes with every division. That is life.\n― R.A. Salvatore, Exile",
-    "You are a true adventurer\n And I am proud to call myself your lover ❤")
+    "You are a true adventurer\n And I am proud to call myself your lover ❤\n― Sarah")
 
 # *** TEST MODE PARAMETER - SET TO TRUE TO UNLOCK ALL DAYS ***
 TEST_MODE <- TRUE  # Change to TRUE to test opening all days
@@ -71,7 +71,7 @@ background_images <- list(
     '22' = paste0(GITHUB_BASE_URL, "MFE.jpg"),
     '23' = paste0(GITHUB_BASE_URL, "HL.jpg"),
     '24' = paste0(GITHUB_BASE_URL, "EX.jpg"),
-    '25' = paste0(GITHUB_BASE_URL, "Christmas.jpg")
+    '25' = paste0(GITHUB_BASE_URL, "Simon_and_I_goat.jpg")
 )
 
 # Shuffled day order for visual interest - now in 5x5 grid
@@ -555,7 +555,8 @@ server <- function(input, output, session) {
             
             # Show quote with background image
             runjs(paste0("$('#quote_modal').css('background-image', 'url(", bg_image, ")');"))
-            runjs(paste0("$('#modal_title').text('Day ", day, "');"))
+            title_text <- if(day == 25) "Merry Christmas 🎄" else paste("Day", day)
+            runjs(paste0("$('#modal_title').text('", title_text, "');"))
             runjs(paste0("$('#modal_quote').html('", quote_text, "');"))
             show("modal_overlay")
             show("quote_modal")
